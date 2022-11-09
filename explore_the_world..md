@@ -1,7 +1,7 @@
 ---
 title: Explore The World
 permalink: \
-theme: default
+theme: minima
 --- 
 # Tell Us Your Dream, Then Go Explore the World
 
