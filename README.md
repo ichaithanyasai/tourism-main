@@ -20,5 +20,4 @@ Any contributions you make are truly appreciated.
 Check out our [contribution guidelines](https://github.com/ichaithanyasai/tourism-website/blob/main/CONTRIBUTING.md) for more information.
 
 ## 🙏 Support
-This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
-# tourism
+This project needs a ⭐️ from you. Don't forget to leave a star ⭐
