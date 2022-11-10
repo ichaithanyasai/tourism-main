@@ -6,7 +6,7 @@ ADVENTURE - A simple website of a tourism agency for tourists.
  -  Pure HTML, CSS, JavaScript used
  
  ## 🔗 To see the project
-[Tourism website](https://abovetheclouds.netlify.app/)
+[Tourism website](https://explore a mile.netlify.app/)
 
 ## 👓 Preview
 
@@ -18,9 +18,6 @@ ADVENTURE - A simple website of a tourism agency for tourists.
 Contributions make the open source community such an amazing place to learn, inspire, and create.
 Any contributions you make are truly appreciated.
 Check out our [contribution guidelines](https://github.com/ichaithanyasai/tourism-website/blob/main/CONTRIBUTING.md) for more information.
-
-## 🛡️ License
-tourism-website is licensed under the [MIT License](https://github.com/ichaithanyasai/tourism-website/blob/main/LICENSE) - see the LICENSE file for details.
 
 ## 🙏 Support
 This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
