@@ -1,0 +1,1156 @@
+.Write a program to illustrate types of constructors and constructor overloading
+public class Car {
+   String make;
+   String model;
+   int year;
+   
+   // Default Constructor
+   public Car() {
+      make = "Unknown";
+      model = "Unknown";
+      year = 0;
+   }
+   
+   // Parameterized Constructor
+   public Car(String make, String model, int year) {
+      this.make = make;
+      this.model = model;
+      this.year = year;
+   }
+   
+   // Copy Constructor
+   public Car(Car car) {
+      this.make = car.make;
+      this.model = car.model;
+      this.year = car.year;
+   }
+   
+   // Constructor Overloading
+   public Car(String make, String model) {
+      this(make, model, 0);
+   }
+   
+   // Main Method
+   public static void main(String[] args) {
+      Car car1 = new Car();  // Default Constructor
+      Car car2 = new Car("Ford", "Mustang", 2020);  // Parameterized Constructor
+      Car car3 = new Car(car2);  // Copy Constructor
+      Car car4 = new Car("Tesla", "Model S");  // Constructor Overloading
+      
+      System.out.println("Car 1: " + car1.make + " " + car1.model + " " + car1.year);
+      System.out.println("Car 2: " + car2.make + " " + car2.model + " " + car2.year);
+      System.out.println("Car 3: " + car3.make + " " + car3.model + " " + car3.year);
+      System.out.println("Car 4: " + car4.make + " " + car4.model + " " + car4.year);
+   }
+}
+o/p
+Car 1: Unknown Unknown 0
+Car 2: Ford Mustang 2020
+Car 3: Ford Mustang 2020
+Car 4: Tesla Model S 0
+
+Write a program to illustrate passing parameters to applet
+import java.applet.*;
+import java.awt.*;
+
+public class ParameterizedApplet extends Applet {
+  String message;
+
+  public void init() {
+    message = getParameter("message");
+    if (message == null) {
+      message = "Hello, World!";
+    }
+  }
+
+  public void paint(Graphics g) {
+    g.drawString(message, 20, 20);
+  }
+}
+
+<html>
+<head>
+<title>Parameterized Applet Example</title>
+</head>
+<body>
+<applet code="ParameterizedApplet.class" width="200" height="200">
+  <param name="message" value="Hello, Java!">
+</applet>
+</body>
+</html>
+
+Write a program to implement static and this keyword?
+public class Employee {
+    private static int count = 0; // static variable
+    private String name; // instance variable
+
+    public Employee(String name) {
+        this.name = name;
+        count++; // increment static variable
+    }
+
+    public static int getCount() { // static method
+        return count;
+    }
+
+    public void printInfo() { // instance method
+        System.out.println("Name: " + this.name);
+        System.out.println("Total Employees: " + Employee.getCount());
+    }
+
+    public static void main(String[] args) {
+        Employee emp1 = new Employee("John");
+        emp1.printInfo(); // output: Name: John, Total Employees: 1
+
+        Employee emp2 = new Employee("Mary");
+        emp2.printInfo(); // output: Name: Mary, Total Employees: 2
+    }
+}
+Name: John
+Total Employees: 1
+Name: Mary
+Total Employees: 2
+
+Write a program to create a file and insert data?
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CreateFileExample {
+    public static void main(String[] args) {
+        String filename = "example.txt";
+        String data = "This is some example text that we will write to the file.";
+
+        try {
+            FileWriter fw = new FileWriter(filename);
+            fw.write(data);
+            fw.close();
+            System.out.println("File created successfully with the following data:\n" + data);
+        } catch (IOException e) {
+            System.out.println("An error occurred while creating the file.");
+            e.printStackTrace();
+        }
+    }
+}
+File created successfully with the following data:
+This is some example text that we will write to the file.
+
+
+Write a java program to illustrate Method overloading
+public class OverloadingExample {
+
+    public static void main(String[] args) {
+        OverloadingExample obj = new OverloadingExample();
+        
+        System.out.println(obj.sum(10, 20));
+        System.out.println(obj.sum(10, 20, 30));
+        System.out.println(obj.sum(10.5, 20.5));
+    }
+    
+    public int sum(int x, int y) {
+        return x + y;
+    }
+    
+    public int sum(int x, int y, int z) {
+        return x + y + z;
+    }
+    
+    public double sum(double x, double y) {
+        return x + y;
+    }
+}
+Write a program to illustrate types of inheritance.
+// Parent class
+class Animal {
+  String name;
+  
+  public Animal(String name) {
+    this.name = name;
+  }
+  
+  public void eat() {
+    System.out.println(name + " is eating.");
+  }
+}
+
+// Single inheritance - Cat inherits from Animal
+class Cat extends Animal {
+  public Cat(String name) {
+    super(name);
+  }
+  
+  public void meow() {
+    System.out.println(name + " is meowing.");
+  }
+}
+
+// Multilevel inheritance - Kitten inherits from Cat
+class Kitten extends Cat {
+  public Kitten(String name) {
+    super(name);
+  }
+  
+  public void purr() {
+    System.out.println(name + " is purring.");
+  }
+}
+
+// Hierarchical inheritance - Dog and Wolf inherit from Animal
+class Dog extends Animal {
+  public Dog(String name) {
+    super(name);
+  }
+  
+  public void bark() {
+    System.out.println(name + " is barking.");
+  }
+}
+
+class Wolf extends Animal {
+  public Wolf(String name) {
+    super(name);
+  }
+  
+  public void howl() {
+    System.out.println(name + " is howling.");
+  }
+}
+
+public class InheritanceDemo {
+  public static void main(String[] args) {
+    // Single inheritance example
+    Cat myCat = new Cat("Whiskers");
+    myCat.eat();
+    myCat.meow();
+    
+    // Multilevel inheritance example
+    Kitten myKitten = new Kitten("Mittens");
+    myKitten.eat();
+    myKitten.meow();
+    myKitten.purr();
+    
+    // Hierarchical inheritance example
+    Dog myDog = new Dog("Rufus");
+    myDog.eat();
+    myDog.bark();
+    
+    Wolf myWolf = new Wolf("Fang");
+    myWolf.eat();
+    myWolf.howl();
+  }
+}
+Whiskers is eating.
+Whiskers is meowing.
+Mittens is eating.
+Mittens is meowing.
+Mittens is purring.
+Rufus is eating.
+Rufus is barking.
+Fang is eating.
+Fang is howling.
+
+Write a Java program to practice using String class and its methods.
+public class StringDemo {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "world!";
+        String str3 = "   Hello world!   ";
+
+        // Length of a String
+        System.out.println("Length of str1: " + str1.length());
+
+        // Concatenation of Strings
+        String str4 = str1.concat(str2);
+        System.out.println("Concatenated string: " + str4);
+
+        // Comparison of Strings
+        System.out.println("Comparison of str1 and str2: " + str1.equals(str2));
+
+        // Substring of a String
+        String str5 = str4.substring(6);
+        System.out.println("Substring of str4: " + str5);
+
+        // Index of a character in a String
+        int index = str4.indexOf('o');
+        System.out.println("Index of 'o' in str4: " + index);
+
+        // Trim leading and trailing spaces
+        String str6 = str3.trim();
+        System.out.println("Trimmed string: " + str6);
+
+        // Convert a String to uppercase
+        String str7 = str4.toUpperCase();
+        System.out.println("Uppercase string: " + str7);
+
+        // Convert a String to lowercase
+        String str8 = str7.toLowerCase();
+        System.out.println("Lowercase string: " + str8);
+    }
+}
+
+Length of str1: 5
+Concatenated string: Helloworld!
+Comparison of str1 and str2: false
+Substring of str4: world!
+Index of 'o' in str4: 4
+Trimmed string: Hello world!
+Uppercase string: HELLOWORLD!
+Lowercase string: helloworld!
+
+Write a program to illustrate Mouse Event Handlin events.
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class MouseEventHandlingExample extends JFrame implements ActionListener, MouseListener {
+
+    private JLabel label;
+    private JButton button;
+
+    public MouseEventHandlingExample() {
+        super("Mouse Event Handling Example");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        label = new JLabel("Label Text");
+        add(label);
+
+        button = new JButton("Click Me");
+        button.addMouseListener(this);
+        add(button);
+
+        setSize(300, 200);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        label.setText("Button Clicked!");
+    }
+
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == button) {
+            label.setText("Button Clicked!");
+        }
+    }
+
+    public void mouseEntered(MouseEvent e) {}
+
+    public void mouseExited(MouseEvent e) {}
+
+    public void mousePressed(MouseEvent e) {}
+
+    public void mouseReleased(MouseEvent e) {}
+
+    public static void main(String[] args) {
+        new MouseEventHandlingExample();
+    }
+
+}
+Write a program to illustrate parameter passing Techniques.
+
+public class ParameterPassingDemo {
+
+    // Method that passes an integer by value
+    public static void passByValue(int x) {
+        x = x + 1;
+        System.out.println("Inside passByValue method - x = " + x);
+    }
+    
+    // Method that passes an array by reference
+    public static void passByReference(int[] arr) {
+        arr[0] = arr[0] + 1;
+        System.out.println("Inside passByReference method - arr[0] = " + arr[0]);
+    }
+    
+    public static void main(String[] args) {
+        int x = 5;
+        System.out.println("Before calling passByValue method - x = " + x);
+        passByValue(x);
+        System.out.println("After calling passByValue method - x = " + x);
+        
+        int[] arr = {1, 2, 3};
+        System.out.println("Before calling passByReference method - arr[0] = " + arr[0]);
+        passByReference(arr);
+        System.out.println("After calling passByReference method - arr[0] = " + arr[0]);
+    }
+}
+
+Before calling passByValue method - x = 5
+Inside passByValue method - x = 6
+After calling passByValue method - x = 5
+Before calling passByReference method - arr[0] = 1
+Inside passByReference method - arr[0] = 2
+After calling passByReference method - arr[0] = 2
+
+Write a program to illustrate Keyboard Event Handling events
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class KeyboardEventDemo extends JFrame implements KeyListener {
+    private JLabel messageLabel;
+
+    public KeyboardEventDemo() {
+        super("Keyboard Event Handling Demo");
+
+        messageLabel = new JLabel("Press any key");
+        messageLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        messageLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        addKeyListener(this);
+        setContentPane(messageLabel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public void keyTyped(KeyEvent e) {
+        char c = e.getKeyChar();
+        messageLabel.setText("You typed: " + c);
+    }
+
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        messageLabel.setText("You pressed: " + KeyEvent.getKeyText(keyCode));
+    }
+
+    public void keyReleased(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        messageLabel.setText("You released: " + KeyEvent.getKeyText(keyCode));
+    }
+
+    public static void main(String[] args) {
+        new KeyboardEventDemo();
+    }
+}
+
+Write a Java program to illustrate Recursion and Nested Class:
+
+public class RecursiveNestedExample {
+  
+  private int recursiveMethod(int num) {
+    if(num == 0) {
+      return 1;
+    } else {
+      return num * recursiveMethod(num - 1);
+    }
+  }
+  
+  public static void main(String[] args) {
+    RecursiveNestedExample obj = new RecursiveNestedExample();
+    int result = obj.recursiveMethod(5);
+    System.out.println("Factorial of 5 is " + result);
+  }
+  
+  static class NestedClass {
+    public void display() {
+      System.out.println("This is a nested class");
+    }
+  }
+}
+
+Factorial of 5 is 120
+
+Write a program to illustrate Multithreading:
+
+public class MultithreadingExample implements Runnable {
+
+  public void run() {
+    for(int i=0; i<5; i++) {
+      System.out.println(Thread.currentThread().getName() + " is running.");
+      try {
+        Thread.sleep(1000);
+      } catch(InterruptedException e) {
+        System.out.println(e);
+      }
+    }
+  }
+  
+  public static void main(String[] args) {
+    MultithreadingExample obj = new MultithreadingExample();
+    Thread t1 = new Thread(obj);
+    Thread t2 = new Thread(obj);
+    t1.setName("Thread 1");
+    t2.setName("Thread 2");
+    t1.start();
+    t2.start();
+  }
+}
+
+Thread 1 is running.
+Thread 2 is running.
+Thread 1 is running.
+Thread 2 is running.
+Thread 1 is running.
+Thread 2 is running.
+Thread 1 is running.
+Thread 2 is running.
+Thread 1 is running.
+Thread 2 is running.
+
+Write a program to find Minimum and Maximum element using Arrays:
+
+import java.util.Arrays;
+
+public class MinMaxElementInArray {
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 8, 6, 1};
+        int min = arr[0];
+        int max = arr[0];
+        
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        System.out.println("Minimum element in array is: " + min);
+        System.out.println("Maximum element in array is: " + max);
+    }
+}
+
+Minimum element in array is: 1
+Maximum element in array is: 8
+
+Write a program to illustrate AWT controls:
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class AwtControls extends Frame {
+    private Label label;
+    private Button button;
+    private TextField textField;
+
+    public AwtControls() {
+        setLayout(new FlowLayout());
+        label = new Label("Enter your name: ");
+        add(label);
+        textField = new TextField(20);
+        add(textField);
+        button = new Button("Submit");
+        add(button);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String name = textField.getText();
+                System.out.println("Hello, " + name + "!");
+            }
+        });
+        setSize(300, 100);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new AwtControls();
+    }
+}
+After running the program, a window will appear with a label "Enter your name:", a text field to enter your name, and a submit button. After entering your name and clicking the submit button, the program will print "Hello, <your name>!" on the console.
+
+Program to illustrate try, catch, throw, throws and finally keywords:
+
+import java.util.Scanner;
+
+public class ExceptionHandlingExample {
+
+  public static void main(String[] args) {
+
+    Scanner scanner = new Scanner(System.in);
+
+    try {
+      System.out.println("Enter the numerator:");
+      int numerator = scanner.nextInt();
+      System.out.println("Enter the denominator:");
+      int denominator = scanner.nextInt();
+      int result = divide(numerator, denominator);
+      System.out.println("Result: " + result);
+    } catch (ArithmeticException e) {
+      System.out.println("Exception occurred: " + e.getMessage());
+    } finally {
+      System.out.println("This block always executes");
+    }
+
+  }
+
+  public static int divide(int numerator, int denominator) throws ArithmeticException {
+    if (denominator == 0) {
+      throw new ArithmeticException("Division by zero is not allowed");
+    }
+    return numerator / denominator;
+  }
+
+}
+
+Enter the numerator:
+10
+Enter the denominator:
+0
+Exception occurred: Division by zero is not allowed
+This block always executes
+
+Program to illustrate thread priorities:
+
+public class ThreadPriorityExample {
+
+  public static void main(String[] args) {
+
+    Thread thread1 = new Thread(new Runnable() {
+      public void run() {
+        for (int i = 1; i <= 5; i++) {
+          System.out.println("Thread 1 - " + i);
+        }
+      }
+    });
+    Thread thread2 = new Thread(new Runnable() {
+      public void run() {
+        for (int i = 1; i <= 5; i++) {
+          System.out.println("Thread 2 - " + i);
+        }
+      }
+    });
+
+    thread1.setPriority(Thread.MIN_PRIORITY);
+    thread2.setPriority(Thread.MAX_PRIORITY);
+
+    thread1.start();
+    thread2.start();
+
+  }
+
+}
+
+Thread 1 - 1
+Thread 1 - 2
+Thread 1 - 3
+Thread 1 - 4
+Thread 1 - 5
+Thread 2 - 1
+Thread 2 - 2
+Thread 2 - 3
+Thread 2 - 4
+Thread 2 – 5
+
+Program to illustrate applet concept:
+
+import java.applet.Applet;
+import java.awt.Graphics;
+
+public class HelloWorldApplet extends Applet {
+
+  public void paint(Graphics g) {
+    g.drawString("Hello World", 20, 20);
+  }
+
+}
+
+Output: The applet will display the text "Hello World" on a web page.
+2.	Program to illustrate Thread Synchronization and Interfaces:
+public class SynchronizedExample {
+
+  public static void main(String[] args) {
+
+    Counter counter = new Counter();
+
+    Thread thread1 = new Thread(new CounterThread(counter));
+    Thread thread2 = new Thread(new CounterThread(counter));
+
+    thread1.start();
+    thread2.start();
+
+  }
+
+}
+
+class Counter {
+
+  private int count;
+
+  public synchronized void increment() {
+    count++;
+    System.out.println("Count: " + count);
+  }
+
+}
+
+class CounterThread implements Runnable {
+
+  private Counter counter;
+
+  public CounterThread(Counter counter) {
+    this.counter = counter;
+  }
+
+  public void run() {
+    for (int i = 0; i < 5; i++) {
+      counter.increment();
+    }
+  }
+
+}
+
+Count: 1
+Count: 2
+Count: 3
+Count: 4
+Count: 5
+Count: 6
+Count: 7
+Count: 8
+Count: 9
+Count: 10
+
+
+Write a Java Program to define a class, define instance methods for setting and retrieving values of instance variables and instantiate its object
+
+public class Student {
+    private String name;
+    private int age;
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.setName("John Doe");
+        student.setAge(25);
+        System.out.println("Name: " + student.getName());
+        System.out.println("Age: " + student.getAge());
+    }
+}
+
+Name: John Doe
+Age: 25
+
+Write a program to implement the concept of User defined Exceptions
+
+class InvalidAgeException extends Exception {
+    public InvalidAgeException(String errorMessage) {
+        super(errorMessage);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            int age = Integer.parseInt(args[0]);
+            if (age < 18) {
+                throw new InvalidAgeException("Age must be 18 or above");
+            }
+            System.out.println("Valid age entered: " + age);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input for age");
+        } catch (InvalidAgeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+$ java Main 20
+Valid age entered: 20
+
+
+
+$ java Main 15
+Age must be 18 or above
+
+$ java Main abc
+Invalid input for age
+
+Write a program to illustrate String Tokenizer, and Date?
+
+import java.util.StringTokenizer;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class Main {
+    public static void main(String[] args) {
+        // String Tokenizer example
+        String sentence = "This is a sample sentence";
+        StringTokenizer tokenizer = new StringTokenizer(sentence, " ");
+        while (tokenizer.hasMoreTokens()) {
+            System.out.println(tokenizer.nextToken());
+        }
+        
+        // Date example
+        Date currentDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        System.out.println("Current date and time: " + dateFormat.format(currentDate));
+    }
+}
+
+This
+is
+a
+sample
+sentence
+Current date and time: 07/05/2023 10:00:00
+
+
+
+Write a program to retrieve the data from text file?
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        String fileName = "file.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + fileName);
+        }
+    }
+}
+
+Content of file.txt
+Line 1
+Line 2
+Line 3
+
+Program to illustrate Random and Scanner classes:
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class RandomAndScanner {
+    public static void main(String[] args) {
+        // Creating a Scanner object to take user input
+        Scanner scanner = new Scanner(System.in);
+
+        // Taking input from user
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+
+        // Creating a Random object
+        Random random = new Random();
+
+        // Generating a random number between 0 and num
+        int randNum = random.nextInt(num);
+
+        // Printing the generated random number
+        System.out.println("Random number between 0 and " + num + " is: " + randNum);
+
+        // Closing the Scanner object
+        scanner.close();
+    }
+}
+
+Enter a number: 10
+Random number between 0 and 10 is: 7
+
+Program to illustrate user-defined Package:
+
+//Creating a package named myPackage
+package myPackage;
+
+public class MyPackageClass {
+    public static void main(String[] args) {
+        System.out.println("This is my package");
+    }
+}
+
+This is my package
+
+Program to take input as two numbers using command line arguments and print their addition, subtraction, multiplication and division:
+
+public class CommandLineArgs {
+    public static void main(String[] args) {
+        // Getting the first number from command line arguments
+        int num1 = Integer.parseInt(args[0]);
+
+        // Getting the second number from command line arguments
+        int num2 = Integer.parseInt(args[1]);
+
+        // Printing the addition of two numbers
+        System.out.println(num1 + " + " + num2 + " = " + (num1 + num2));
+
+        // Printing the subtraction of two numbers
+        System.out.println(num1 + " - " + num2 + " = " + (num1 - num2));
+
+        // Printing the multiplication of two numbers
+        System.out.println(num1 + " * " + num2 + " = " + (num1 * num2));
+
+        // Printing the division of two numbers
+        System.out.println(num1 + " / " + num2 + " = " + ((double)num1 / num2));
+    }
+}
+
+java CommandLineArgs 10 5
+10 + 5 = 15
+10 - 5 = 5
+10 * 5 = 50
+10 / 5 = 2.0
+
+Program to illustrate JDBC:
+
+import java.sql.*;
+
+public class JdbcExample {
+    public static void main(String[] args) {
+        try {
+            // Loading the JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            // Creating a connection to the database
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "password");
+
+            // Creating a statement object
+            Statement stmt = conn.createStatement();
+
+            // Executing a SQL query and storing the result in a ResultSet object
+            ResultSet rs = stmt.executeQuery("SELECT * FROM mytable");
+
+            // Printing the result
+            while (rs.next()) {
+                System.out.println(rs.getInt(1) + " " + rs.getString(2));
+            }
+
+            // Closing the objects
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+1 John
+2 Jane
+3 Bob
+
+1.	Program to illustrate Interfaces:
+// Define an interface
+interface Animal {
+   public void eat();
+   public void makeSound();
+}
+
+// Implement the interface
+class Dog implements Animal {
+   public void eat() {
+      System.out.println("Dog eats bones.");
+   }
+   
+   public void makeSound() {
+      System.out.println("Dog barks.");
+   }
+}
+
+// Use the interface
+public class Main {
+   public static void main(String[] args) {
+      Animal myDog = new Dog();
+      myDog.eat();
+      myDog.makeSound();
+   }
+}
+Dog eats bones.
+Dog barks.
+
+Program to illustrate Flow and BorderLayout:
+
+import java.awt.*;
+import javax.swing.*;
+
+public class Main extends JFrame {
+   public Main() {
+      // Set the layout of the frame to FlowLayout
+      setLayout(new FlowLayout());
+      
+      // Add three buttons to the frame
+      add(new JButton("Button 1"));
+      add(new JButton("Button 2"));
+      add(new JButton("Button 3"));
+      
+      // Create a panel with BorderLayout
+      JPanel panel = new JPanel(new BorderLayout());
+      
+      // Add a label to the north region
+      panel.add(new JLabel("This is the North region."), BorderLayout.NORTH);
+      
+      // Add a text area to the center region
+      panel.add(new JTextArea(10, 20), BorderLayout.CENTER);
+      
+      // Add the panel to the frame
+      add(panel);
+      
+      // Set the size of the frame
+      setSize(400, 300);
+      
+      // Display the frame
+      setVisible(true);
+   }
+   
+   public static void main(String[] args) {
+      new Main();
+   }
+}
+
+Program to illustrate Thread Synchronization:
+
+class Counter {
+   private int count = 0;
+   
+   // synchronized method to increment the count
+   public synchronized void increment() {
+      count++;
+   }
+   
+   // synchronized method to decrement the count
+   public synchronized void decrement() {
+      count--;
+   }
+   
+   // method to get the count
+   public int getCount() {
+      return count;
+   }
+}
+
+class IncrementThread extends Thread {
+   private Counter counter;
+   
+   public IncrementThread(Counter counter) {
+      this.counter = counter;
+   }
+   
+   public void run() {
+      for (int i = 0; i < 10000; i++) {
+         counter.increment();
+      }
+   }
+}
+
+class DecrementThread extends Thread {
+   private Counter counter;
+   
+   public DecrementThread(Counter counter) {
+      this.counter = counter;
+   }
+   
+   public void run() {
+      for (int i = 0; i < 10000; i++) {
+         counter.decrement();
+      }
+   }
+}
+
+public class Main {
+   public static void main(String[] args) throws InterruptedException {
+      Counter counter = new Counter();
+      
+      // create and start the threads
+      IncrementThread incrementThread = new IncrementThread(counter);
+      DecrementThread decrementThread = new DecrementThread(counter);
+      incrementThread.start();
+      decrementThread.start();
+      
+      // wait for the threads to finish
+      incrementThread.join();
+      decrementThread.join();
+      
+      // print the count
+      System.out.println("Count: " + counter.getCount());
+   }
+}
+
+Count: 0
+
+Program to illustrate MenuBar
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class MenuBarExample {
+    public static void main(String[] args) {
+        // Create a frame
+        JFrame frame = new JFrame("Menu Bar Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+        
+        // Create a menu bar
+        JMenuBar menuBar = new JMenuBar();
+        
+        // Create menus and menu items
+        JMenu fileMenu = new JMenu("File");
+        JMenuItem openItem = new JMenuItem("Open");
+        JMenuItem saveItem = new JMenuItem("Save");
+        JMenuItem exitItem = new JMenuItem("Exit");
+        fileMenu.add(openItem);
+        fileMenu.add(saveItem);
+        fileMenu.addSeparator();
+        fileMenu.add(exitItem);
+        
+        JMenu editMenu = new JMenu("Edit");
+        JMenuItem cutItem = new JMenuItem("Cut");
+        JMenuItem copyItem = new JMenuItem("Copy");
+        JMenuItem pasteItem = new JMenuItem("Paste");
+        editMenu.add(cutItem);
+        editMenu.add(copyItem);
+        editMenu.add(pasteItem);
+        
+        // Add menus to the menu bar
+        menuBar.add(fileMenu);
+        menuBar.add(editMenu);
+        
+        // Add the menu bar to the frame
+        frame.setJMenuBar(menuBar);
+        
+        // Display the frame
+        frame.setVisible(true);
+    }
+}
+
+A frame with a menu bar that has two menus: "File" and "Edit". The "File" menu has three items: "Open", "Save", and "Exit". The "Edit" menu has three items: "Cut", "Copy", and "Paste".
+
+Program to illustrate character streams
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class CharacterStreamExample {
+    public static void main(String[] args) {
+        // Write to a file using FileWriter
+        try (FileWriter writer = new FileWriter("output.txt")) {
+            writer.write("Hello, world!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        // Read from a file using FileReader
+        try (FileReader reader = new FileReader("output.txt")) {
+            int c;
+            while ((c = reader.read()) != -1) {
+                System.out.print((char) c);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+Hello, world!
